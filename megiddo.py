@@ -7,8 +7,8 @@ class Megiddo():
     self.won = [False, False]
 
   def __repr__(self):
-    d = {1:"x",0:".",-1:"o"}
-    return "\n".join([" ".join(x) for x in np.vectorize(lambda x: d[x])(self.board)]) + f"\n{d[1-2*(self.turn%2)]} to move."
+    D = dict(zip(range(-1,2),"o.x"))
+    return "\n".join([" ".join(x) for x in np.vectorize(lambda x: D[x])(self.board)]) + f"\n{D[1-2*(self.turn%2)]} to move."
     
   def get(self, i: int, j: int):
     return self.board[i%6, j%6]
